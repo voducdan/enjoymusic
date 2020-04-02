@@ -1,0 +1,9 @@
+<div class="new-post" style="width:100%">
+    <h3 style="font-weight:400">Vừa mới tải lên</h3>
+    <hr>
+    <div class="list-post d-flex justify-content-start flex-wrap">
+        <div class="new-post-thumnail rounded" *ngFor="let song of newSongs">
+            <new-post-thumnail [song]="song"></new-post-thumnail>
+        </div>
+    </div>
+</div>

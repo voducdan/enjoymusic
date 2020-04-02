@@ -1,4 +1,5 @@
 ﻿using enjoymusic_project.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,11 +16,21 @@ namespace enjoymusic_project.Data
             this.db = db;
         }
 
-        public IEnumerable<Song> GetAll()
+        public async Task<IEnumerable<Song>> GetAll()
         {
-            var query = from r in db.Songs
-                        select r;
+            var query = await db.Song.FromSqlRaw("exec sp_getAll").ToListAsync();
             return query;
+        }
+
+        public Song GetById(string id)
+        {
+            var parseString = id.Split("-");
+            int parsedId = Int32.Parse(parseString[parseString.Length - 1]);
+
+            var query = from s in db.Song
+                        where s.id == parsedId
+                        select s;
+            return query.ElementAt(0);
         }
 
     }

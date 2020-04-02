@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using enjoymusic_project.Data;
@@ -10,6 +11,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.FileProviders;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
@@ -28,6 +30,10 @@ namespace enjoymusic_project
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors(c =>
+            {
+                c.AddPolicy("AllowOrigin", options => options.AllowAnyOrigin());
+            });
             services.AddDbContextPool<EnjoyMusicDBContext>(options =>
                 {
                     options.UseSqlServer(Configuration.GetConnectionString("EnjoyMusicDB"));
@@ -43,6 +49,15 @@ namespace enjoymusic_project
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseStaticFiles(new StaticFileOptions
+            {
+                FileProvider = new PhysicalFileProvider(
+                     Path.Combine(Directory.GetCurrentDirectory(), "Data/Songs")),
+                RequestPath = "/song"
+            });
+
+            app.UseCors(c => { c.AllowAnyOrigin(); });
 
             app.UseHttpsRedirection();
 

@@ -13,6 +13,6 @@ namespace enjoymusic_project.Data
         {
 
         }
-        public DbSet<Song> Songs { get; set; }
+        public DbSet<Song> Song { get; set; }
     }
 }

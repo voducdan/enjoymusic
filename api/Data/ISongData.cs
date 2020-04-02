@@ -8,6 +8,7 @@ namespace enjoymusic_project.Data
 {
     public interface ISongData
     {
-        IEnumerable<Song> GetAll();
+        Task<IEnumerable<Song>> GetAll();
+        Song GetById(string id);
     }
 }
