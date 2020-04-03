@@ -1,7 +1,11 @@
-.navbar a {
-    color: white!important;
+.nav-item .category {
+    color: black!important;
 }
 
 ul.nav {
     background-color: #e4e8eb;
+}
+
+.account a{
+    color: white;
 }

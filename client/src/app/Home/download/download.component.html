@@ -1,0 +1,20 @@
+<div class="top-download" style="width:100%">
+    <h3 style="font-weight:400">Tải nhiều nhất</h3>
+    <hr>
+    <div class="top-download" style="width:100%">
+        <div class="top-download-thumnail d-flex mb-3" *ngFor="let item of topDownload">
+            <div class="row">
+                <div class="col-md-2" style="padding-right: 0;">
+                    <img [src]="item.avt" class="img-thumbnail avt" alt="">
+                </div>
+                <div class="title col-md-10">
+                    <div class="name">{{item.name}}</div>
+                    <div class="singer d-flex justify-content-lg-between">
+                        <span>{{item.singer}}</span>
+                        <span>{{item.download}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

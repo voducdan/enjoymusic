@@ -56,6 +56,23 @@ namespace enjoymusic_project.Controllers
 
         }
 
+        [HttpGet("nghe-nhieu-nhat")]
+        public async Task<IActionResult> GetTopListen()
+        {
+            try
+            {
+                if (!ModelState.IsValid)
+                {
+                    return BadRequest(ModelState);
+                }
+                var songs = await this.songData.GetTopListen();
+                return Ok(songs);
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError);
+            }
+        }
 
     }
 }

@@ -1,32 +1,26 @@
 <div class="toolbar" role="banner">
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-primary">
-      <a class="navbar-brand col-md-2 col-5" href="#">
-        <img width="40" alt="Angular Logo"
-          src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==" />
-        <span>Welcome</span>
-      </a>
-      <div class="collapse navbar-collapse col-md-8 justify-content-center " id="navbarSupportedContent">
-        <form class="form-inline my-2 my-lg-0" style="width:70%">
-          <input class="form-control mr-sm-2 col-0" type="search" placeholder="Tìm kiếm theo tên bài hát" aria-label="Search"
-            style="width:100%">
-        </form>
-      </div>
-      <div class="account col-md-2 col-5">
-        <a href="#">Đăng nhập </a>
-        <span>/</span>
-        <a href="#"> Đăng ký</a>
-      </div>
-    </nav>
-    <ul class="nav">
-      <li class="nav-item">
-        <a class="nav-link active" href="#">Active</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Link</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Link</a>
-      </li>
-    </ul>
-  </div>
+  <nav class="navbar navbar-expand-lg navbar-light bg-primary">
+    <a class="navbar-brand col-md-2 col-5" href="#">
+      <img width="40" alt="Angular Logo"
+        src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==" />
+      <span>Welcome</span>
+    </a>
+    <div class="collapse navbar-collapse col-md-8 justify-content-center " id="navbarSupportedContent">
+      <form class="form-inline my-2 my-lg-0" style="width:70%">
+        <input class="form-control mr-sm-2 col-0" type="search" placeholder="Tìm kiếm theo tên bài hát"
+          aria-label="Search" style="width:100%">
+      </form>
+    </div>
+    <div class="account col-md-2 col-5">
+      <a href="#">Đăng nhập </a>
+      <span>/</span>
+      <a href="#"> Đăng ký</a>
+    </div>
+  </nav>
+  <ul class="nav">
+    <li class="nav-item" *ngFor="let category of categories">
+      <a class="nav-link active category" [routerLink]="category.url" routerLinkActive="activelink" [routerLinkActiveOptions]="{exact:true}">{{category.name}}</a>
+    </li>
+  </ul>
+</div>

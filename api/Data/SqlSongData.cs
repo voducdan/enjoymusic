@@ -33,5 +33,10 @@ namespace enjoymusic_project.Data
             return query.ElementAt(0);
         }
 
+        public async Task<IEnumerable<Song>> GetTopListen()
+        {
+            var query = await db.Song.FromSqlRaw("exec sp_topListen").ToListAsync();
+            return query;
+        }
     }
 }

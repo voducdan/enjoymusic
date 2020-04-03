@@ -39,6 +39,7 @@ namespace enjoymusic_project
                     options.UseSqlServer(Configuration.GetConnectionString("EnjoyMusicDB"));
                 });
             services.AddScoped<ISongData, SqlSongData>();
+            services.AddScoped<ICategoryData, SqlCategoryData>();
             services.AddControllers();
         }
 
@@ -53,8 +54,8 @@ namespace enjoymusic_project
             app.UseStaticFiles(new StaticFileOptions
             {
                 FileProvider = new PhysicalFileProvider(
-                     Path.Combine(Directory.GetCurrentDirectory(), "Data/Songs")),
-                RequestPath = "/song"
+                     Path.Combine(Directory.GetCurrentDirectory(), "static")),
+                RequestPath = "/static"
             });
 
             app.UseCors(c => { c.AllowAnyOrigin(); });

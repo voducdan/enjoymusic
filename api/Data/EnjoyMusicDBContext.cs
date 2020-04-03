@@ -14,5 +14,6 @@ namespace enjoymusic_project.Data
 
         }
         public DbSet<Song> Song { get; set; }
+        public DbSet<Category> Categories { get; set; }
     }
 }

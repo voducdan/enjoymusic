@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { Global } from '../../Global/global-variable';
 
 @Component({
 	selector: 'new-post-thumnail',
@@ -6,9 +7,9 @@ import { Component, Input } from '@angular/core';
 	styleUrls: ['./new-post-thumnail.component.css'],
 })
 export class NewPostThumnailComponent {
-    @Input() song;
-    
-    ngOnInit(){
-        console.log(this.song)
-    }
+	@Input() song;
+	constructor(private global:Global){}
+	ngOnInit() {
+		this.song.avt = this.global.IMAGES_URL + this.song.avt;
+	}
 }

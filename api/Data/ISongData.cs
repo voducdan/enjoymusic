@@ -10,5 +10,7 @@ namespace enjoymusic_project.Data
     {
         Task<IEnumerable<Song>> GetAll();
         Song GetById(string id);
+
+        Task<IEnumerable<Song>> GetTopListen();
     }
 }
