@@ -1,0 +1,26 @@
+.top-listen-thumnail {
+	background-color: transparent;
+	cursor: pointer;
+}
+
+.top-listen-thumnail .avt {
+	padding: 0;
+}
+.top-listen-thumnail .title .name {
+	font-size: 0.9rem;
+	font-weight: 500;
+}
+.top-listen-thumnail .title .singer {
+	color: grey;
+	font-weight: 600;
+}
+.top-listen-thumnail .title .singer .listen{
+	font-size: 11px;
+    font-family: 'SFProDisplay-Regular';
+ }
+.listen-material-icons {
+	font-size: 12px;
+	display: inline-flex;
+	vertical-align: text-top;
+	margin-right: 0.7px;
+}
