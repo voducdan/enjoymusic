@@ -4,15 +4,15 @@
             <new-post></new-post>
         </div>
         <div class="col-md-4">
-            <listen></listen>
+            <song-thumnail [songs]="topListen" [title]="'Nghe nhiều nhất'"></song-thumnail>
         </div>
     </div>
     <div class="row">
         <div class="col-md-4">
-            <top-download></top-download>
+            <song-thumnail [songs]="topDownload" [title]="'Tải nhiều nhất'"></song-thumnail>
         </div>
         <div class="col-md-4">
-            <suggest></suggest>
+            <song-thumnail [songs]="suggest" [title]="'Đề cử'"></song-thumnail>
         </div>
         <div class="col-md-4">
             <top-comment></top-comment>

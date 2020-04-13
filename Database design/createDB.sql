@@ -1,3 +1,5 @@
+if exists (select name from sys.databases where name='EnjoyMusicDB') drop database EnjoyMusicDB
+
 create database EnjoyMusicDB
 
 use EnjoyMusicDB
@@ -34,7 +36,7 @@ create table Song (
 	path varchar(100)
 	primary key (id)
 )
-
+alter table Song alter column lyric nvarchar(3000)
 create table List (
 	id int identity,
 	listener int,
@@ -56,6 +58,8 @@ create table Comment (
 	create_at datetime
 	primary key (id)
 )
+
+alter table Comment add  rate int
 
 create table Favourite (
 	id int,

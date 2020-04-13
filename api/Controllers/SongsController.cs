@@ -21,7 +21,7 @@ namespace enjoymusic_project.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> Get()
+        public async Task<IActionResult> Get(string theloai)
         {
             try
             {
@@ -29,8 +29,16 @@ namespace enjoymusic_project.Controllers
                 {
                     return BadRequest(ModelState);
                 }
-                var songs = await this.songData.GetAll();
-                return Ok(songs);
+                if (string.IsNullOrEmpty(theloai))
+                {
+                    var songs = await this.songData.GetAll();
+                    return Ok(songs);
+                }
+                else
+                {
+                    var songs = await this.songData.GetByCategory(theloai);
+                    return Ok(songs);
+                }
             }
             catch (Exception)
             {
@@ -74,5 +82,91 @@ namespace enjoymusic_project.Controllers
             }
         }
 
+        [HttpGet("tai-nhieu-nhat")]
+        public async Task<IActionResult> GetTopDownload()
+        {
+            try
+            {
+                if (!ModelState.IsValid)
+                {
+                    return BadRequest(ModelState);
+                }
+                var songs = await this.songData.GetTopDownLoad();
+                return Ok(songs);
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError);
+            }
+        }
+
+        [HttpGet("de-cu")]
+        public async Task<IActionResult> GetTopRate()
+        {
+            try
+            {
+                if (!ModelState.IsValid)
+                {
+                    return BadRequest(ModelState);
+                }
+                var songs = await this.songData.GetTopRate();
+                return Ok(songs);
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError);
+            }
+        }
+
+        [HttpGet("binh-luan-moi")]
+        public async Task<IActionResult> GetNewComment()
+        {
+            try
+            {
+                if (!ModelState.IsValid)
+                {
+                    return BadRequest(ModelState);
+                }
+                var songs = await this.songData.GetNewComment();
+                return Ok(songs);
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError);
+            }
+        }
+
+        [HttpGet("tim-kiem")]
+        public async Task<IActionResult> Search(string casi, string nhacsi, string ten)
+        {
+            try
+            {
+                if (!ModelState.IsValid)
+                {
+                    return BadRequest(ModelState);
+                }
+                Dictionary<string,IEnumerable<Song>> result = new Dictionary<string, IEnumerable<Song>>();
+                if (!String.IsNullOrEmpty(casi))
+                {
+                    var songs = await this.songData.GetBySinger(casi);
+                    result.Add("singer",songs);
+                }
+                if (!String.IsNullOrEmpty(nhacsi))
+                {
+                    var songs = await this.songData.GetByComposer(nhacsi);
+                    result.Add("composer",songs);
+                }
+                if (!String.IsNullOrEmpty(ten))
+                {
+                    var songs = await this.songData.GetByName(ten);
+                    result.Add("name",songs);
+                }
+                return Ok(result);
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError);
+            }
+        }
     }
 }

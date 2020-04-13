@@ -21,7 +21,6 @@ namespace enjoymusic_project.Data
             var query = await db.Song.FromSqlRaw("exec sp_getAll").ToListAsync();
             return query;
         }
-
         public Song GetById(string id)
         {
             var parseString = id.Split("-");
@@ -32,10 +31,44 @@ namespace enjoymusic_project.Data
                         select s;
             return query.ElementAt(0);
         }
-
         public async Task<IEnumerable<Song>> GetTopListen()
         {
             var query = await db.Song.FromSqlRaw("exec sp_topListen").ToListAsync();
+            return query;
+        }
+        public async Task<IEnumerable<Song>> GetTopDownLoad()
+        {
+            var query = await db.Song.FromSqlRaw("exec sp_topDownload").ToListAsync();
+            return query;
+        }
+        public async Task<IEnumerable<Song>> GetTopRate()
+        {
+            var query = await db.Song.FromSqlRaw("exec sp_topRate").ToListAsync();
+            return query;
+        }
+        public async Task<IEnumerable<Song>> GetNewComment()
+        {
+            var query = await db.Song.FromSqlRaw("exec sp_newComment").ToListAsync();
+            return query;
+        }
+        public async Task<IEnumerable<Song>> GetByCategory(string category)
+        {
+            var query = await db.Song.FromSqlRaw("exec sp_GetSongByCategory {0}",category).ToListAsync();
+            return query;
+        }
+        public async Task<IEnumerable<Song>> GetBySinger(string singer)
+        {
+            var query = await db.Song.FromSqlRaw("exec sp_GetBySinger {0}", singer).ToListAsync();
+            return query;
+        }
+        public async Task<IEnumerable<Song>> GetByComposer(string composer)
+        {
+            var query = await db.Song.FromSqlRaw("exec sp_getByComposer {0}", composer).ToListAsync();
+            return query;
+        }
+        public async Task<IEnumerable<Song>> GetByName(string name)
+        {
+            var query = await db.Song.FromSqlRaw("exec sp_searchByName {0}", name).ToListAsync();
             return query;
         }
     }

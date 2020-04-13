@@ -14,7 +14,6 @@ export class NavComponent {
 	ngOnInit() {
 		this.navService.getAllCategories().subscribe(res => {
 			this.categories = res;
-			console.log(this.categories);
 		});
 	}
 }

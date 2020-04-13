@@ -8,13 +8,12 @@ import { NavComponent, NavService } from './nav/index';
 import {
 	HomeComponent,
 	NewPostComponent,
-	ListenComponent,
 	NewPostThumnailComponent,
-	SuggestComponent,
 	CommentComponent,
-	DownloadComponent,
 	PostService,
-	ListenService,
+	SongThumnailComponent,
+	SongThumnailService
+	
 } from './Home/index';
 import { Global } from './Global/global-variable';
 
@@ -24,14 +23,12 @@ import { Global } from './Global/global-variable';
 		NavComponent,
 		HomeComponent,
 		NewPostComponent,
-		ListenComponent,
 		NewPostThumnailComponent,
-		SuggestComponent,
 		CommentComponent,
-		DownloadComponent,
+		SongThumnailComponent
 	],
 	imports: [BrowserModule, AppRoutingModule, HttpClientModule],
-	providers: [PostService, NavService, ListenService, Global],
+	providers: [PostService, NavService,SongThumnailService, Global],
 	bootstrap: [AppComponent],
 })
 export class AppModule {}
